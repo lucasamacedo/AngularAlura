@@ -7,8 +7,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  photos = [{url: '', description: ''}];
+  photos: any[] = [];
   constructor(http: HttpClient){
-    console.log(http);
+    http
+      .get<any[]>('http://localhost:3000/flavio/photos')
+      .subscribe(photos => this.photos = photos, err => console.log(err));
   }
 }
