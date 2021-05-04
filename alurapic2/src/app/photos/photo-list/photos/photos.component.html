@@ -1,6 +1,6 @@
-<ol class="list-unstyled row">
+<ol class="list-unstyled">
   <li *ngFor="let cols of rows" class="row">
-    <div *ngFor="let photo of cols">
+    <div *ngFor="let photo of cols" class="col-4">
       <app-photo
         [url]="photo.url"
         [description]="photo.description">
