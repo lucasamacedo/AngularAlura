@@ -12,16 +12,14 @@ import { UserService } from './../user/user.service';
 export class HeaderComponent {
 
   user$: Observable<User | null> = new Observable<User | null>();
-  //user?: User;
 
   constructor(
     private userService: UserService,
     private router: Router) {
     this.user$ = userService.getUser();
-    //this.user$.subscribe(user => this.user = user);
   }
 
-  logout() {
+  logout(): void {
     this.userService.logout();
     this.router.navigate(['']);
   }
