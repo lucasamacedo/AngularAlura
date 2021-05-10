@@ -8,7 +8,8 @@ import { User } from './user';
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-  private userSubject = new BehaviorSubject<User>({id: 0, name: '', email: ''});
+  //private userSubject = new BehaviorSubject<User>({id: 0, name: '', email: ''});
+  private userSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   constructor(private tokenService: TokenService) {
     this.tokenService.hasToken() &&
       this.decodeAndNotify();
@@ -19,7 +20,7 @@ export class UserService {
     this.decodeAndNotify();
   }
 
-  getUser(): Observable<User> {
+  getUser(): Observable<User | null> {
     return this.userSubject.asObservable();
   }
 
