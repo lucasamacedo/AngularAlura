@@ -1,7 +1,11 @@
-import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validator';
+import { SignUpService } from './signup.service';
+import { NewUser } from './new-user';
+import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 
 @Component({
   templateUrl: './signup.component.html'
@@ -11,7 +15,9 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userNotTakenValidatorService: UserNotTakenValidatorService) {}
+    private userNotTakenValidatorService: UserNotTakenValidatorService,
+    private signUpService: SignUpService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -42,4 +48,15 @@ export class SignUpComponent implements OnInit {
         ]]
     });
   }
+
+  signUp(): void {
+    const newUser = this.signUpForm.getRawValue() as NewUser;
+    this.signUpService
+      .signUp(newUser)
+      .subscribe(
+        () => this.router.navigate(['']),
+        err => console.log(err)
+      );
+  }
+
 }

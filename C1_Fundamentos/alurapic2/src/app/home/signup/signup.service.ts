@@ -1,3 +1,4 @@
+import { NewUser } from './new-user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -11,5 +12,9 @@ export class SignUpService {
 
   checkUserNameTaken(userName: string): Observable<Object> {
     return this.http.get(API_URL + '/user/exists/' + userName);
+  }
+
+  signUp(newUser: NewUser) {
+    return this.http.post(API_URL + '/user/signup', newUser);
   }
 }
