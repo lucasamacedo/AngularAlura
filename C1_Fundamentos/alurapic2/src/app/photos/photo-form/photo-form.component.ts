@@ -26,13 +26,16 @@ export class PhotoFormComponent implements OnInit {
     });
   }
 
-  upload(event: Event): void{
+  uploadImage(event: Event): void {
     const target = event.target as HTMLInputElement;
-    let desc = '';
-    let allowComments = true;
     if (target.files){
       this.file = target.files[0] as File;
     }
+  }
+
+  upload(event: Event): void{
+    let desc = '';
+    let allowComments = true;
     desc = this.photoForm.get('description')?.value;
     allowComments = this.photoForm.get('allowComments')?.value;
     console.log(this.file);
