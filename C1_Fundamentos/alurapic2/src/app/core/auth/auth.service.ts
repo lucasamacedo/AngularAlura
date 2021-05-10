@@ -29,7 +29,6 @@ export class AuthService {
       if (authToken != null){
         this.userService.setToken(authToken);
       }
-      console.log(authToken);
     }));
   }
 }
