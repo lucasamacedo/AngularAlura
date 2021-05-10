@@ -34,4 +34,8 @@ export class UserService {
       console.log('erro: token nulo');
     }
   }
+  logout(): void {
+    this.tokenService.removeToken();
+    this.userSubject.next(null);
+  }
 }
