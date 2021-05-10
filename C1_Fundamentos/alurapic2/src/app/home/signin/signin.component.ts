@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { AuthService } from './../../core/auth/auth.service';
 @Component({
   templateUrl: './signin.component.html'
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit, AfterViewInit {
   loginForm: FormGroup = new FormGroup({});
   @ViewChild('userNameInput') userNameInput?: ElementRef<HTMLInputElement>;
 
@@ -16,7 +16,8 @@ export class SignInComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private platformDetectorService: PlatformDetectorService
+    private platformDetectorService: PlatformDetectorService,
+    private cdRef: ChangeDetectorRef
     ) {}
 
   ngOnInit(): void {
@@ -31,7 +32,20 @@ export class SignInComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
+    if (this.platformDetectorService.isPlatformBrowser()){
+      if(this.userNameInput){
+        this.userNameInput.nativeElement.focus();
+      } else {
+        console.log('erro');
+      }
+    }
   }
+
+  ngAfterViewInit(): void {
+    this.platformDetectorService.isPlatformBrowser() &&
+   this.userNameInput?.nativeElement.focus();
+    this.cdRef.detectChanges();
+}
 
   login(): void{
     const userName = this.loginForm.get('userName')?.value;
