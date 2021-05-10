@@ -13,6 +13,9 @@ export class PhotoFormComponent implements OnInit {
 
   photoForm: FormGroup = new FormGroup({});
   file?: File;
+  //preview: string | null | undefined | ArrayBuffer = '';
+  preview = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private photoService: PhotoService,
@@ -26,10 +29,15 @@ export class PhotoFormComponent implements OnInit {
     });
   }
 
-  uploadImage(event: Event): void {
+  handleFile(event: Event): void {
     const target = event.target as HTMLInputElement;
     if (target.files){
+      console.log('entrou');
       this.file = target.files[0] as File;
+      const reader = new FileReader();
+      reader.onload = (eventt: any) => this.preview = eventt.target?.result;
+      reader.readAsDataURL(this.file);
+      console.log(this.preview);
     }
   }
 
