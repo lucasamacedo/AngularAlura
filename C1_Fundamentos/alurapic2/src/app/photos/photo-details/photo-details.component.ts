@@ -28,7 +28,7 @@ export class PhotoDetailsComponent implements OnInit{
     this.photo$.subscribe(() => {}, err => {
       console.log(err);
       this.router.navigate(['not-found']);
-    })
+    });
   }
 
   remove(): void {
@@ -42,6 +42,16 @@ export class PhotoDetailsComponent implements OnInit{
       err => {
         console.log('erro');
         this.alertService.warning('Could not delete photo!', true);
+      });
+  }
+
+  like(photo: Photo): void {
+    this.photoService
+      .like(photo.id)
+      .subscribe(liked => {
+        if (liked) {
+          this.photo$ = this.photoService.findById(this.photoId);
+        }
       });
   }
 
