@@ -1,7 +1,9 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { VMessageModule } from './../../shared/components/vmessage/vmessage.module';
 import { PhotoCommentsComponent } from './photo-comments/photo-comments.component';
 import { PhotoModule } from './../photo/photo.module';
 import { PhotoDetailsComponent } from './photo-details.component';
@@ -18,7 +20,10 @@ import { PhotoDetailsComponent } from './photo-details.component';
   imports: [
     CommonModule,
     PhotoModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    VMessageModule,
   ]
 })
 export class PhotoDetailsModule {
