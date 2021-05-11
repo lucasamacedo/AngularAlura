@@ -8,6 +8,7 @@ import { VMessageModule } from './../../shared/components/vmessage/vmessage.modu
 import { PhotoCommentsComponent } from './photo-comments/photo-comments.component';
 import { PhotoModule } from './../photo/photo.module';
 import { PhotoDetailsComponent } from './photo-details.component';
+import { ShowIfLoggedModule } from './../../shared/directives/show-if-logged/show-if-logged.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PhotoDetailsComponent } from './photo-details.component';
     FormsModule,
     ReactiveFormsModule,
     VMessageModule,
+    ShowIfLoggedModule
   ]
 })
 export class PhotoDetailsModule {
