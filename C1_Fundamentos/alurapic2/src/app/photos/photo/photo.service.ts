@@ -39,4 +39,11 @@ export class PhotoService {
       API + '/photos/' + photoId + '/comments'
     );
   }
+
+  addComment(photoId: number, commentText: string): Observable<Object> {
+    return this.http.post(
+      API + '/photos/' + photoId + '/comments',
+      {commentText}
+    );
+  }
 }
