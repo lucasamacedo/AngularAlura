@@ -1,4 +1,3 @@
-import { PlatformDetectorService } from './../../core/platform-detector/platform-detector.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -7,6 +6,8 @@ import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validat
 import { SignUpService } from './signup.service';
 import { NewUser } from './new-user';
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
+import { userNamePasswordValidator } from './username-password.validator';
+import { PlatformDetectorService } from './../../core/platform-detector/platform-detector.service';
 
 @Component({
   templateUrl: './signup.component.html',
@@ -54,6 +55,8 @@ export class SignUpComponent implements OnInit {
           Validators.maxLength(14),
         ],
       ],
+    }, {
+      validator: userNamePasswordValidator
     });
   }
   ngAfterViewInit(): void {
