@@ -9,12 +9,12 @@
       autofocus
     />
     <app-vmessage
-      *ngIf="signUpForm.get('email')?.errors?.required && form.submitted"
+      *ngIf="signUpForm.get('email')?.errors?.required && (form.submitted || signUpForm.get('email')?.touched)"
       text="Email is required!"
     >
     </app-vmessage>
     <app-vmessage
-      *ngIf="signUpForm.get('email')?.errors?.email && form.submitted"
+      *ngIf="signUpForm.get('email')?.errors?.email && (form.submitted || signUpForm.get('email')?.touched)"
       text="Invalid e-mail"
     >
     </app-vmessage>
@@ -27,17 +27,17 @@
       placeholder="full name"
     />
     <app-vmessage
-      *ngIf="signUpForm.get('fullName')?.errors?.required && form.submitted"
+      *ngIf="signUpForm.get('fullName')?.errors?.required && (form.submitted || signUpForm.get('fullName')?.touched)"
       text="Full name is required!"
     >
     </app-vmessage>
     <app-vmessage
-      *ngIf="signUpForm.get('fullName')?.errors?.minlength && form.submitted"
+      *ngIf="signUpForm.get('fullName')?.errors?.minlength && (form.submitted || signUpForm.get('fullName')?.touched)"
       text="Minimum length is 2"
     >
     </app-vmessage>
     <app-vmessage
-      *ngIf="signUpForm.get('fullName')?.errors?.maxlength && form.submitted"
+      *ngIf="signUpForm.get('fullName')?.errors?.maxlength && (form.submitted || signUpForm.get('fullName')?.touched)"
       text="Maximum length is 40"
     >
     </app-vmessage>
@@ -50,22 +50,22 @@
       placeholder="user name"
     />
     <app-vmessage
-      *ngIf="signUpForm.get('userName')?.errors?.required && form.submitted"
+      *ngIf="signUpForm.get('userName')?.errors?.required && (form.submitted || signUpForm.get('userName')?.touched)"
       text="Username is required!"
     >
     </app-vmessage>
     <app-vmessage
-      *ngIf="signUpForm.get('userName')?.errors?.minlength && form.submitted"
+      *ngIf="signUpForm.get('userName')?.errors?.minlength && (form.submitted || signUpForm.get('userName')?.touched)"
       text="Minimum length is 2"
     >
     </app-vmessage>
     <app-vmessage
-      *ngIf="signUpForm.get('userName')?.errors?.maxlength && form.submitted"
+      *ngIf="signUpForm.get('userName')?.errors?.maxlength && (form.submitted || signUpForm.get('userName')?.touched)"
       text="Maximum length is 30"
     >
     </app-vmessage>
     <app-vmessage
-      *ngIf="signUpForm.get('userName')?.errors?.lowerCase && form.submitted"
+      *ngIf="signUpForm.get('userName')?.errors?.lowerCase && (form.submitted || signUpForm.get('userName')?.touched)"
       text="Must be lowercase"
     >
     </app-vmessage>
@@ -87,17 +87,17 @@
       placeholder="password"
     />
     <app-vmessage
-      *ngIf="signUpForm.get('password')?.errors?.required && form.submitted"
+      *ngIf="signUpForm.get('password')?.errors?.required && (form.submitted || signUpForm.get('password')?.touched)"
       text="Password is required!"
     >
     </app-vmessage>
     <app-vmessage
-      *ngIf="signUpForm.get('password')?.errors?.minlength && form.submitted"
+      *ngIf="signUpForm.get('password')?.errors?.minlength && (form.submitted || signUpForm.get('password')?.touched)"
       text="Minimum length is 8"
     >
     </app-vmessage>
     <app-vmessage
-      *ngIf="signUpForm.get('password')?.errors?.maxlength && form.submitted"
+      *ngIf="signUpForm.get('password')?.errors?.maxlength && (form.submitted || signUpForm.get('password')?.touched)"
       text="Maximum length is 14"
     >
     </app-vmessage>
