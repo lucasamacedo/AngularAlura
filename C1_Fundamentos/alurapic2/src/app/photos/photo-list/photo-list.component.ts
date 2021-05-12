@@ -1,7 +1,8 @@
-import { PhotoService } from './../photo/photo.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { LoadingService } from './../../shared/components/loading/loading.service';
+import { PhotoService } from './../photo/photo.service';
 import { Photo } from '../photo/photo';
 
 @Component({
@@ -19,10 +20,12 @@ export class PhotoListComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private loadingService: LoadingService
     ){ }
 
   ngOnInit(): void{
+    this.loadingService.start();
     this.activatedRoute.params.subscribe(params => {
       this.userName = params.userName;
       this.photos = this.activatedRoute.snapshot.data.photos;
